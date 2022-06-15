@@ -7,7 +7,7 @@ To function and interact with other AWS services, AWS Lambda is associated to a 
 
 Once the contact form submitted, an email containing all environment variables of the function is received.
 
-[email](/images/email.png)
+[email](/email.png)
 
 Then, the security credentials ```AWS_ACCESS_KEY_ID```, ```AWS_SECRET_ACCESS_KEY``` and ```AWS_SESSION_TOKEN``` can be used to connect to AWS programmatically with the AWS Lambda function identity. Here is an example for linux (for Windows, replace 'export' with 'set'):
 
@@ -30,7 +30,7 @@ Use the following command to list roles: ```aws iam list-roles```.
 
 Bingo! One role is assumable by all principals in the AWS account. 
 
-[secret-role](/images/secret-role.png)
+[secret-role](/secret-role.png)
 
 The trust policy of the role is (note that the account ID has been removed and replaced by <aws_account_id>):
 
@@ -67,11 +67,11 @@ Now that the role has been assumed, enumerate the permissions of the role. For t
 
 ```aws-list-all query --region eu-central-1 --directory ./data/```
 
-[aws-list-all](/images/aws-list-all.png)
+[aws-list-all](/aws-list-all.png)
 
 In this case, Secrets Manager resources have been found. Let's see if a value can be retrieved for one of the secret. For that purpose, use the following command ```aws secretsmanager get-secret-value --secret-id arn:aws:secretsmanager:eu-central-1:<aws_account_id>:secret:<secret_id> --region eu-central-1```.
 
-[flag](/images/flag.png)
+[flag](/flag.png)
 
 The flag is present in one of the secrets!
 
